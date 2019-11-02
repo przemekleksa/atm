@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+div {
+    color: #fff;
+    font-size: 2rem;
+    h1 {
+        margin: 0 0 20px 0;
+    }
+    .select-operation {
+        button {
+            border: none;
+            outline: none;
+            width: 49%;
+            margin: 0 2% 0 0;
+            padding: 30px;
+            cursor: pointer;
+            font-size: 2rem;
+            @include button-background;
+            &:last-child {
+                margin: 0;
+            }
+            &:hover {
+                @include hover-button-background;
+            }
+        }
+    
+    }
+    .cancel-operation {
+        margin: 2% 0 0 0;
+        button {
+            border: none;
+            outline: none;
+            width: 100%;
+            margin: 2% 0 0 0;
+            padding: 30px;
+            cursor: pointer;
+            font-size: 2rem;
+            @include button-background;
+            &:last-child {
+                margin: 0;
+            }
+            &:hover {
+                @include hover-button-background;
+            }
+        }
+    }
+}

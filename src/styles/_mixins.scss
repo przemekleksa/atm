@@ -1,0 +1,17 @@
+
+@mixin button-background{
+    background: $button-background-1;
+    background: $button-background-2;
+    background: $button-background-3;
+    background: $button-background-4;
+    filter: $button-filter;
+  }
+
+@mixin hover-button-background{
+    background: $hover-button-background-1;
+    background: $hover-button-background-2;
+    background: $hover-button-background-3;
+    background: $hover-button-background-4;
+    filter: $hover-button-filter;
+  }
+  
