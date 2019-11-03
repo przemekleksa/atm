@@ -3,23 +3,13 @@ import './menu.scss';
 import { connect } from 'react-redux';
 
 class Menu extends Component {
-    // state = { 
-    //     operation: 0,
-    //     balance: 345500,
-    //  }
-    
-    // selectOperation = (type) => {
-    //     this.setState({
-    //         operation: type,
-    //     })
-    // }
 
+    // selectOperation will change the screen depending on user choice
     selectOperation = (val) => {
         this.props.changeOperation(val)
     }
 
     render() { 
-        // console.log(this.props)
         return ( 
             <div>
                 <h1>Select operation</h1>
@@ -30,10 +20,6 @@ class Menu extends Component {
                 <div className="cancel-operation">
                     <button onClick={() => this.selectOperation(3)}>Cancel operation</button>
                 </div>
-                {/* <Operate /> */}
-                {/* <Operate operation={this.props.operation} balance={this.props.balance} /> */}
-                {/* {this.state.operation === "withdraw" ? <Withdraw balance={this.state.balance} operation={this.state.operation}/> : this.state.operation === "deposit" ? 
-                <Deposit balance={this.state.balance}/> : <div></div>} */}
             </div>
          );
     }

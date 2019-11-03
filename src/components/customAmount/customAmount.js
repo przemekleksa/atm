@@ -3,14 +3,19 @@ import './customAmount.scss';
 import { connect } from 'react-redux';
 
 class CustomAmount extends Component {
+
+    // handleClick sends the pressed digit to be added to custom amount to withdraw/deposit
     handleClick = (val) => {
             this.props.changeAmount(val) 
     }
 
+    // changeMenu changes displayed component from the one to enter custom amount to either withdraw or deposit one
+    // it also handles displaying messages on the screen of the withdraw/deposit component.
     changeMenu = (menu) => {
         this.props.changeOperation(menu)
         if (this.props.customAmount%20 !== 0 && this.props.customAmount%50 !== 0) {
-            this.props.changeText("amount must be a multiple of 20 or 50")
+            this.props.changeText("Please enter the amount in multiples of 20 or 50")
+            this.props.changeText("Amount have to multiply by 20 or 50")
         } else if ((this.props.customAmount*100 > this.props.balance) && this.props.operation === 4){
             this.props.changeText("Insufficient funds")
         } else if (this.props.operation === 4) {
@@ -18,31 +23,28 @@ class CustomAmount extends Component {
         } else if (this.props.operation === 5) {
             this.props.changeText("Added " + this.props.customAmount + " PLN")
         }
-        
-        // this.props.changeAmount(0)
     }
     
+    // changeBalance is changing the amount that is in user account
+    // it also prevents user from withdrawing more money than he/she has and it prevents of withdrawing and depositing amounts that are not multiply by 20 or 50
     changeBalance = (customAmount) => {
-        // console.log('hej')
-        // console.log(this.props.operation)
-        // this.props.changeBalance(-customAmount*100)
         console.log(this.props.customAmount + ' ' +this.props.balance)
         if (this.props.operation === 4 && parseInt(this.props.customAmount*100) > this.props.balance){
-            console.log('not enough funds')
+            console.log('Amount must be a multiple of 20 or 50')
         } else if (this.props.customAmount%20 !== 0 && this.props.customAmount%50 !== 0) {
-            console.log('nielegalna operacja')
-            // this.props.changeText("zla liczba")
+            console.log('')
         } else if (this.props.operation === 4){
-            // console.log('tak zadzialalo ' + this.props.customAmount)
             this.props.changeBalance(-customAmount*100)
         } else if (this.props.operation === 5){
             this.props.changeBalance(customAmount*100)
         }
     }
+    // deleteCustomAmount cleans the custom amount that user wanted to withdraw/deposit
     deleteCustomAmount = () => {
         this.props.deleteCustomAmount()
     }
 
+    //deleteCustomAmountLastDigit lets user delete last entered digit so that he/she can correct the custom amount to withdraw or deposit
     deleteCustomAmountLastDigit = () => {
         this.props.deleteCustomAmountLastDigit()
     }
@@ -76,6 +78,7 @@ class CustomAmount extends Component {
                         <button onClick={() => this.deleteCustomAmount()} className = "delete-button">Cancel</button>
                     </div>
                     <div className="buttons-row">
+                        {/* depends if user is depositing or withdrawing money the accept button will transfer him/her to proper component after accepting the custom amount*/}
                         <button className = "accept-button" onClick={() => {this.changeBalance(this.props.customAmount);this.changeMenu(this.props.operation-3)}
                         }>Accept</button>
                     </div>

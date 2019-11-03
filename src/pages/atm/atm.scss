@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
 .atm {
-    background-color: rgb(4, 54, 218);
+    background-color: #4F86C6;
     min-height: 100vh;
+    font-family: 'Lato', sans-serif;
     .atm-menu {
         width: 800px;
-        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
         padding: 20px 0;
     }
 }

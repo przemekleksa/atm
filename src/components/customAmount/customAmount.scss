@@ -1,2 +1,12 @@
-@import '../pinPad/pinPad.scss'
+@import '../pinPad/pinPad.scss';
 
+.custom-amount {
+    h2 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+    p {
+        margin: 5px 0;
+        font-size: 2.5rem;
+    }
+}

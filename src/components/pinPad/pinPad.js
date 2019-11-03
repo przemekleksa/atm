@@ -3,65 +3,8 @@ import './pinPad.scss';
 import { connect } from 'react-redux';
 
 class PinPad extends Component {
-    // state = { 
-    //     val1: null,
-    //     val2: null,
-    //     val3: null,
-    //     val4: null,
-    // }
 
-    // handleClick = (val) => {
-    //     if (val === "delete"){
-    //         this.setState({
-    //             val1: null,
-    //             val2: null,
-    //             val3: null,
-    //             val4: null,
-    //         }); 
-    //     } else if (!this.state.val1) {
-    //         if (val === "back") {
-    //             this.setState({
-    //                 val1: null,
-    //             });
-    //         } else
-    //         this.setState({
-    //             val1: val,
-    //         });
-    //     } else if (!this.state.val2) {
-    //         if (val === "back") {
-    //             this.setState({
-    //                 val1: null,
-    //             });
-    //         } else
-    //         this.setState({
-    //             val2: val,
-    //         }); 
-    //     } else if (!this.state.val3) {
-    //         if (val === "back") {
-    //             this.setState({
-    //                 val2: null,
-    //             });
-    //         } else
-    //         this.setState({
-    //             val3: val,
-    //         }); 
-    //     } else if (!this.state.val4) {
-    //         if (val === "back") {
-    //             this.setState({
-    //                 val3: null,
-    //             });
-    //         } else
-    //         this.setState({
-    //             val4: val,
-    //         }); 
-    //     } else if (val === "back") {
-    //             this.setState({
-    //                 val4: null,
-    //             });
-    //     } else if (this.state.val4) {
-    //     }
-    // }
-
+    // handleClick is responsible for adding, removing and clearing PIN digits, as well as accepting entered PIN to validate it
     handleClick = (val) => {
         if (val === "delete"){
             this.props.deleteCode()
@@ -84,11 +27,7 @@ class PinPad extends Component {
         return ( 
             <div>
                 <div className="screen">
-                {console.log(this.props.val)}
-                    {this.props.val.length<1 ? "enter pin" : this.props.val}
-                    {/* {this.props.val[1]}
-                    {this.props.val[2]}
-                    {this.props.val[3]} */}
+                    {this.props.val.length<1 ? "Enter PIN" : this.props.val}
                 </div>
                 <div className="buttons">
                     <div className="buttons-row">

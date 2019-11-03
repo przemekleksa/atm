@@ -2,56 +2,37 @@ import React, { Component } from 'react';
 import './operate.scss';
 import { connect } from 'react-redux';
 
+// this component can be use bouth to withdraw and deposit money
+
 class Operate extends Component {
-//     state = { 
-//         balance: (this.props.balance/100).toFixed(2),
-//         operation: this.props.operation
-//      }
-//    static getDerivedStateFromProps(props, state) {
-//        if (props.operation !== state.operation) {
-//            return {
-//                 operation: props.operation
-//            }
-//        }
-//    }
-//    static getDerivedStateFromProps(props, state) {
-//        if (props.operation !== state.operation) {
-//            return {
-//                 operation: props.operation
-//            }
-//        }
-//    }
+
+    // changeMenu function lets you go back to main menu
     changeMenu = (menu) => {
         this.props.changeOperation(menu)
         this.props.changeText("")
     }
 
+    // changeBalance lets you add or deduct money to and from the account.
+    // if you want to withdraw more money than there is currently on your account this function will prevent you from doing so by displaying proper alert on the screen.
+    // it also display message with withdrawed/deposited amount
     changeBalance = (amount) => {
         if (this.props.operation === 1 && this.props.balance < (amount*100)){
-            // this.changeFundsInfo()
             this.props.changeText("Insufficient funds")
         } else if (this.props.operation === 1 && amount){
-            // console.log("w")
             this.props.changeBalance(-amount*100)
             this.props.changeText("Deducted "+ amount + " PLN")
         } else if (this.props.operation === 2) {
-            // console.log("D")
             this.props.changeBalance(amount*100)
             this.props.changeText("Added "+ amount + " PLN")
         }
     }
-    // changeFundsInfo = (amount) => {
-    //     if (this.props.balance < (amount*100)){
-    //         console.log("za malo hajsu")
-    //     }
-    // }
+
+    // this one deletes custom amount
     deleteCustomAmount = () => {
-        console.log('delete')
         this.props.deleteCustomAmount()
     }
-
+    
     render() { 
-        // console.log(this.props)
         return ( 
             <div className="operation">
                 <div className="operation-box">
@@ -60,7 +41,6 @@ class Operate extends Component {
                         </div>
                         <div className="show-balance">
                             <h2>Balance</h2>
-                           
                         </div>
                 </div>
                 <div className="screen-box">
@@ -68,7 +48,7 @@ class Operate extends Component {
                            <p>{this.props.fundsInfo}</p> 
                         </div>
                         <div className="balance">
-                        <p>{(this.props.balance/100).toFixed(2)} PLN</p>
+                            <p>{(this.props.balance/100).toFixed(2)} PLN</p>
                         </div>
                 </div>
                 <div className="amount-select">
@@ -128,8 +108,6 @@ const mapDispatchToProps = (dispatch) => {
         changeBalance: (amount) => { dispatch({type: "CHANGE_BALANCE", amount}) },
         changeText: (text) => {dispatch ({ type: "FUNDS_INFO", text})},
         deleteCustomAmount: () => {dispatch ({ type: 'DELETE_CUSTOM_AMOUNT'})}
-        // fundsInfo: (text) => { dispatch({type: "FUNDS_INFO", text}) }
-        // fundsInfo: (text) => { dispatch({type:'FUNDS_INFO', text}) } 
     }
 }
  

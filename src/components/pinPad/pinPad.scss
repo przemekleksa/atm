@@ -1,5 +1,9 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 .screen {
-    background-color: rgb(55, 189, 230);
+    background-color: #4FB0C6;
+    // background-color: rgb(55, 189, 230);
     width: 500px;
     margin: 0 auto;
     padding: 30px;
@@ -18,44 +22,33 @@
             color: rgb(0, 3, 41);
             cursor: pointer;
             margin: 10px 10px 0 0;
-            // background-color: rgb(199, 199, 199);
-            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#e2e2e2+0,dbdbdb+50,d1d1d1+51,fefefe+100;Grey+Gloss+%231 */
-            background: rgb(226,226,226); /* Old browsers */
-            background: -moz-linear-gradient(top,  rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
-            background: -webkit-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(to bottom,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
-
+            @include button-background;
             border: none;
             outline: none;
             &:last-child {
                 margin: 10px 0 0 0;
             }
             &:hover {
-                background: rgba(255, 255, 255, 0.685);
-                    background: -moz-linear-gradient(top,  rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
-                    background: -webkit-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
-                    background: linear-gradient(to bottom,  rgba(226,226,226,0.685) 0%,rgba(219,219,219,0.685) 50%,rgba(209,209,209,0.685) 51%,rgba(254,254,254,0.685) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+                @include hover-button-background;
             }
         }
         .back-button {
-            background: rgb(255, 230, 0);
+            background: linear-gradient(to bottom,  rgba(255,230,29,1) 0%,rgba(255,230,29,1) 50%,rgba(245,220,19,1) 51%,rgba(245,220,19,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             &:hover{ 
-                background: rgba(255, 230, 0, 0.685);
+                background: linear-gradient(to bottom,  rgba(255,230,29,0.7) 0%,rgba(255,230,29,0.7) 50%,rgba(245,220,19,0.7) 51%,rgba(245,220,19,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             }
         }
         .delete-button {
-            background: rgb(255, 29, 29);
+            background: linear-gradient(to bottom,  rgba(255,29,29,1) 0%,rgba(255,29,29,1) 50%,rgba(245,19,19,1) 51%,rgba(245,19,19,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             &:hover{ 
-                background: rgba(255, 29, 29, 0.685);
+                background: linear-gradient(to bottom,  rgba(255,29,29,0.7) 0%,rgba(255,29,29,0.7) 50%,rgba(245,19,19,0.7) 51%,rgba(245,19,19,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             }
         }
         .accept-button {
             width: 560px;
-            background: rgb(49, 250, 42);
+            background: linear-gradient(to bottom,  rgba(49, 250, 42, 1) 0%,rgba(49, 250, 42, 1) 50%,rgba(49, 240, 32, 1) 51%,rgba(49, 240, 32, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             &:hover{ 
-                background: rgba(49, 250, 42, 0.685);
+                background: linear-gradient(to bottom,  rgba(49, 250, 42, 0.7) 0%,rgba(49, 250, 42, 0.7) 50%,rgba(49, 240, 32, 0.7) 51%,rgba(49, 240, 32, 0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             }
         }
     }

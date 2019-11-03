@@ -1,21 +1,14 @@
 const initState = {
-    // val: [null, null, null, null],
     val: [],
-    // val: [1,2,3,4],
-    // val1: null,
-    // val2: null,
-    // val3: null,
-    // val4: null,
     balance: 15000,
     amount: 0,
     operation: 0,
     authenticated: true,
-    fundsInfo: "",
+    fundsInfo: "Please select amount",
     customAmount: 0,
 }
 
 const rootReducer = (state = initState, action) => {
-    // console.log(action)
     if (action.type === 'CHANGE_OPERATION'){
         let newOperation = action.operation;
         return {
@@ -44,9 +37,8 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'CHECK_CODE'){
-        // console.log('elo')
+        //this one could validate if the entered PIN and user id is correct but since it is not a requirement in this excercise it only checkes if entered PIN has 4 digits
         if (state.val.length > 3){
-            // console.log(state)
             return {
                 ...state,
                 authenticated: true
