@@ -1,6 +1,10 @@
 @import '../pinPad/pinPad.scss';
 
 .custom-amount {
+    background-color: #4FB0C6;
+    width: 530px;
+    padding: 15px;
+    margin: 0 auto;
     h2 {
         margin: 0;
         font-size: 2.5rem;
@@ -8,5 +12,7 @@
     p {
         margin: 5px 0;
         font-size: 2.5rem;
+        padding: 0 82px 0 0;
+        text-align: right;
     }
 }

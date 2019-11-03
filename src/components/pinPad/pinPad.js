@@ -27,7 +27,7 @@ class PinPad extends Component {
         return ( 
             <div>
                 <div className="screen">
-                    {this.props.val.length<1 ? "Enter PIN" : this.props.val}
+                    <h2>{this.props.val.length<1 ? "Enter PIN" : this.props.val}</h2>
                 </div>
                 <div className="buttons">
                     <div className="buttons-row">

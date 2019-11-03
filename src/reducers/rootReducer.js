@@ -3,7 +3,7 @@ const initState = {
     balance: 15000,
     amount: 0,
     operation: 0,
-    authenticated: true,
+    authenticated: false,
     fundsInfo: "Please select amount",
     customAmount: 0,
 }
