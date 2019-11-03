@@ -6,15 +6,16 @@ const initState = {
     // val2: null,
     // val3: null,
     // val4: null,
-    balance: 3500,
+    balance: 15000,
     amount: 0,
-    operation: 1,
+    operation: 0,
     authenticated: true,
-    fundsInfo: ""
+    fundsInfo: "",
+    customAmount: 0,
 }
 
 const rootReducer = (state = initState, action) => {
-    console.log(action)
+    // console.log(action)
     if (action.type === 'CHANGE_OPERATION'){
         let newOperation = action.operation;
         return {
@@ -45,8 +46,7 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'CHECK_CODE'){
         // console.log('elo')
         if (state.val.length > 3){
-            console.log(state)
-            let newUser = true
+            // console.log(state)
             return {
                 ...state,
                 authenticated: true
@@ -67,7 +67,32 @@ const rootReducer = (state = initState, action) => {
             fundsInfo: newFundsInfo
         }
     }
-    console.log(state)
+    if (action.type === 'ADD_CUSTOM_AMOUNT'){
+        let newAmount = state.customAmount + action.val
+        if(newAmount[0] === "0") newAmount = newAmount.slice(1, newAmount.length)
+        return {
+            ...state,
+            customAmount: newAmount
+        }
+    }
+    if (action.type === 'DELETE_CUSTOM_AMOUNT') {
+        return {
+            ...state,
+            customAmount: 0
+        }
+    }
+    if (action.type === 'DELETE_CUSTOM_AMOUNT_LAST_DIGIT') {
+        let newCustomAmount = state.customAmount
+        if (newCustomAmount !== 0 && newCustomAmount.length === 1) {
+            newCustomAmount = 0
+        } else if (newCustomAmount.length > 1){
+            newCustomAmount = newCustomAmount.slice(0,newCustomAmount.length-1)
+        }
+        return {
+            ...state,
+            customAmount: newCustomAmount
+        }
+    }
     return state;
 }
 

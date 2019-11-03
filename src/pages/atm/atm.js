@@ -5,6 +5,7 @@ import './atm.scss';
 import { connect } from 'react-redux';
 import Operate from '../../components/operate/operate';
 import Cancel from '../../components/cancel/cancel';
+import CustomAmount from '../../components/customAmount/customAmount';
 // import Operate from '../../components/operate';
 
 class Atm extends Component {
@@ -14,11 +15,14 @@ class Atm extends Component {
                 <div className="atm-menu">
                     {!this.props.authenticated ? <PinPad /> :
                     this.props.operation === 0 ? <Menu /> : 
-                    this.props.operation === 3 ? <Cancel/> : <Operate/>}
+                    this.props.operation === 3 ? <Cancel/> : 
+                    this.props.operation === 4 ? <CustomAmount /> : 
+                    this.props.operation === 5 ? <CustomAmount /> :
+                    <Operate />}
                     {/* {!this.props.authenticated ? <PinPad /> :
-                    this.props.operation === 0 ? <Menu /> : <Operate />} */}
-                    {/* {!this.props.authenticated ? <PinPad /> : ""}
-                    {this.props.operation === 0 ? <Menu /> : <Operate />} */}
+                    this.props.operation === 0 ? <Menu /> : 
+                    this.props.operation === 3 ? <Cancel/> : <Operate/>} */}
+                   
                     
                 </div>
             </div>

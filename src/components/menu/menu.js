@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './menu.scss';
-import Operate from '../operate/operate';
 import { connect } from 'react-redux';
 
 class Menu extends Component {

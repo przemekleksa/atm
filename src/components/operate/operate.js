@@ -21,8 +21,8 @@ class Operate extends Component {
 //            }
 //        }
 //    }
-    backToMenu = () => {
-        this.props.changeOperation(0)
+    changeMenu = (menu) => {
+        this.props.changeOperation(menu)
         this.props.changeText("")
     }
 
@@ -33,9 +33,11 @@ class Operate extends Component {
         } else if (this.props.operation === 1 && amount){
             // console.log("w")
             this.props.changeBalance(-amount*100)
+            this.props.changeText("Deducted "+ amount + " PLN")
         } else if (this.props.operation === 2) {
             // console.log("D")
             this.props.changeBalance(amount*100)
+            this.props.changeText("Added "+ amount + " PLN")
         }
     }
     // changeFundsInfo = (amount) => {
@@ -43,21 +45,30 @@ class Operate extends Component {
     //         console.log("za malo hajsu")
     //     }
     // }
+    deleteCustomAmount = () => {
+        console.log('delete')
+        this.props.deleteCustomAmount()
+    }
 
     render() { 
-        console.log(this.props)
+        // console.log(this.props)
         return ( 
             <div className="operation">
                 <div className="operation-box">
                         <div className="operation-type">
                             <h2>{this.props.operation === 1 ? "Withdraw" : this.props.operation === 2 ? "Deposit" : ""}</h2>
                         </div>
-                        <div className="balance-info">
-                            {this.props.fundsInfo}
-                        </div>
                         <div className="show-balance">
                             <h2>Balance</h2>
-                            <p>{(this.props.balance/100).toFixed(2)} PLN</p>
+                           
+                        </div>
+                </div>
+                <div className="screen-box">
+                        <div className="funds-text">
+                           <p>{this.props.fundsInfo}</p> 
+                        </div>
+                        <div className="balance">
+                        <p>{(this.props.balance/100).toFixed(2)} PLN</p>
                         </div>
                 </div>
                 <div className="amount-select">
@@ -90,12 +101,12 @@ class Operate extends Component {
                         <button className="amount" onClick={() => this.changeBalance(500)}>
                         500
                         </button>
-                        <button className="amount">
+                        <button className="amount" onClick={() => {this.changeMenu(this.props.operation+3); this.deleteCustomAmount()}} >
                         Other 
                         </button>
                     </div>
                 </div>
-                <button onClick={() => this.backToMenu()}>
+                <button onClick={() => this.changeMenu(0)}>
                     Back
                 </button>
             </div>
@@ -115,7 +126,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changeOperation: (operation) => { dispatch({type: "CHANGE_OPERATION", operation}) }, 
         changeBalance: (amount) => { dispatch({type: "CHANGE_BALANCE", amount}) },
-        changeText: (text) => {dispatch ({ type: "FUNDS_INFO", text})}
+        changeText: (text) => {dispatch ({ type: "FUNDS_INFO", text})},
+        deleteCustomAmount: () => {dispatch ({ type: 'DELETE_CUSTOM_AMOUNT'})}
         // fundsInfo: (text) => { dispatch({type: "FUNDS_INFO", text}) }
         // fundsInfo: (text) => { dispatch({type:'FUNDS_INFO', text}) } 
     }
