@@ -15,7 +15,7 @@ class CustomAmount extends Component {
         this.props.changeOperation(menu)
         if (this.props.customAmount%20 !== 0 && this.props.customAmount%50 !== 0) {
             this.props.changeText("Please enter the amount in multiples of 20 or 50")
-            this.props.changeText("Amount have to multiply by 20 or 50")
+            // this.props.changeText("Amount have to multiply by 20 or 50")
         } else if ((this.props.customAmount*100 > this.props.balance) && this.props.operation === 4){
             this.props.changeText("Insufficient funds")
         } else if (this.props.operation === 4) {
